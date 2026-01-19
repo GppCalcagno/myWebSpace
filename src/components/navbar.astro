@@ -2,16 +2,17 @@
 import { Icon } from 'astro-icon/components'
 
 ---
-<header class="h-15 content-center bg-amber-700">
-    <nav class="flex px-3 justify-between bg-amber-600 items-center ">
+<header class="h-16 content-center bg-amber-700 shrink-0">
+    <nav class="flex px-3 justify-between bg-amber-600 items-center">
         <div>
-            <h1 class="text-xl px-2 bg-amber-200">LOGO</h1>
+            <a href="/"><h1 class="text-3xl px-2 bg-amber-200">LOGO</h1></a>
         </div>
         <div class = "bg-amber-800">
-            <ul class="flex gap-x-10 ">
-                    <a href="/projects" class="flex items-center gap-2 p-2 rounded hover:text-amber-200 transition-colors">
-                        <Icon name="line-md:github" class="w-5 h-5" /> Projects </a>
-                <li><a href="/about"> About</a></li>
+            <ul class="flex gap-3">
+                <!-- TODO:To fix tailwind -->
+                <li> <a href="/projects/" class="flex items-center gap-2  rounded hover:text-amber-200 transition-colors"> <Icon name="fxemoji:constructionsign" /> Projects </a></li>
+                <li> <a href="/timeline/" class="flex items-center gap-2  rounded hover:text-amber-200 transition-colors"> <Icon name="fxemoji:constructionsign" /> TimeLine </a></li>
+                <li><a href="/about/" class="flex items-center gap-2  rounded hover:text-amber-200 transition-colors"> <Icon name="fxemoji:floppydisk2"  /> AboutMe</a></li>
             </ul>
         </div>
     </nav>

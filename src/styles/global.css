@@ -1,1 +1,15 @@
 @import "tailwindcss";
+@plugin '@tailwindcss/typography';
+
+/*
+ base     → stili di base (es. font globale, reset)
+components → componenti riutilizzabili (.btn, .card)
+utilities → classi singole (text-sm, p-4, bg-red-500) 
+*/
+
+
+@layer base {
+  html {
+    @apply font-mono;
+  }
+}

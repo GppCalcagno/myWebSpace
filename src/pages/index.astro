@@ -1,10 +1,34 @@
 ---
 import Layout from '../layouts/Layout.astro';
 
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+
+import { getCollection } from 'astro:content';
+
+const notesCollection = await getCollection('notes', ({ data }) => data.ispublic);
+notesCollection.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
+
+console.log(notesCollection)
+
 ---
 
-<Layout>
-	<h1>Hello</h1>
+<Layout >
+	
+	<h1 class="text-5xl">This is a test page</h1>
+	<h1 class="text-5xl">This is a test page</h1>
+	<h1 class="text-5xl">This is a test page</h1>
+	<h1 class="text-5xl">This is a test page</h1>
+	<h1 class="text-5xl">This is a test page</h1>
+	<h1 class="text-5xl">This is a test page</h1>
+	<h1 class="text-5xl">This is a test page</h1>
+	<h1 class="text-5xl">This is a test page</h1>
+    <ul>
+        {   
+            notesCollection.map((i)=> (
+        <li>
+            <a href={"/notes/"+i.id}>{i.id} </a>
+        </li>
+        
+        ))
+        }
+    </ul>
 </Layout>
