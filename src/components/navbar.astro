@@ -1,18 +1,19 @@
 ---
 import { Icon } from 'astro-icon/components'
+import { Image } from 'astro:assets';
+
+import  LogoImg  from '../assets/logo1.png'
 
 ---
-<header class="h-16 content-center bg-amber-700 shrink-0">
-    <nav class="flex px-3 justify-between bg-amber-600 items-center">
-        <div>
-            <a href="/"><h1 class="text-3xl px-2 bg-amber-200">LOGO</h1></a>
+<header class="h-13 sm:h-15 p-1 content-center  shrink-0 border-b border-gray-200">
+    <nav class="flex px-3 justify-between items-center">
+        <div> <a href="/"><Image  src={LogoImg}  alt="navbar logo" class="w-19 sm:w-22"/> </a>
         </div>
-        <div class = "bg-amber-800">
-            <ul class="flex gap-3">
-                <!-- TODO:To fix tailwind -->
-                <li> <a href="/projects/" class="flex items-center gap-2  rounded hover:text-amber-200 transition-colors"> <Icon name="fxemoji:constructionsign" /> Projects </a></li>
-                <li> <a href="/timeline/" class="flex items-center gap-2  rounded hover:text-amber-200 transition-colors"> <Icon name="fxemoji:constructionsign" /> TimeLine </a></li>
-                <li><a href="/about/" class="flex items-center gap-2  rounded hover:text-amber-200 transition-colors"> <Icon name="fxemoji:floppydisk2"  /> AboutMe</a></li>
+        <div class = "">
+            <ul class="flex gap-4 sm:gap-7">
+                <li> <a href="/timeline/" class="btn_navbar">  Timeline/ </a></li>
+                <li> <a href="/projects/" class="btn_navbar"> Projects/ </a></li>
+                <li><a href="/about/" class="btn_navbar"> AboutMe/ </a></li>
             </ul>
         </div>
     </nav>

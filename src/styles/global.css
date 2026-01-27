@@ -7,9 +7,31 @@ components → componenti riutilizzabili (.btn, .card)
 utilities → classi singole (text-sm, p-4, bg-red-500) 
 */
 
+@custom-variant dark (&:where(.dark, .dark *));
 
+/*********** LAYERS ***********/
 @layer base {
   html {
     @apply font-mono;
+    
   }
+}
+
+@layer components {
+    .btn_navbar { @apply items-center sm:text-lg hover:underline underline-offset-2 transition-transform hover:-translate-y-1 inline-block }
+
+}
+
+
+/*********** THEMES - WIP DARK***********/
+/* TODO: study themes */
+@theme {
+  /* ... */
+  --color-background: #FAFAFA;
+
+}
+
+.dark{
+  --color-background: #0e0a0a;
+
 }

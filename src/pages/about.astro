@@ -1,8 +1,11 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import {AboutMe_data} from '../content/static_pages/abouteMe'
 
 ---
 
 <Layout>
-	<h1>About</h1>
+	<h1 class="text-3xl">Aboute me</h1>
+	<p>{AboutMe_data.firstPar1}</p>
+	<p>{AboutMe_data.firstPar2}</p>
 </Layout>

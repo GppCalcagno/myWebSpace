@@ -10,11 +10,11 @@ import Footer from '../components/footer.astro'
 		<meta name="viewport" content="width=device-width" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="generator" content={Astro.generator} />
-		<title>Astro Basics</title>
+		<title>PeppOS</title>
 	</head>
-	<body class="container max-w-5xl mx-auto flex flex-col h-full">
+	<body class="container max-w-5xl mx-auto flex flex-col h-full bg-background">
 		<Navbar/>
-		<main class="flex-1 bg-amber-300">
+		<main class="flex-1 px-5 sm:px-8 py-3">
 			<slot/> <!-- slot is used as child note  -->
 		</main>
 		<Footer/>

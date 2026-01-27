@@ -19,12 +19,12 @@ const { entry } = Astro.props;
 // Renderizza il Markdown in un componente Astro
 const { Content } = await render(entry);
 ---
-<Layout class="bg-green-300">
-
-  <article class="prose">
-  <h1>{entry.data.title}</h1>
-  <time>{entry.data.date.toLocaleDateString()}</time>
-  <Content />
+<Layout>
+<div class="flex justify-cente">
+<article class="prose max-w-2xl mx-auto">
+    <h1>{entry.data.title}</h1>
+    <time>{entry.data.date.toLocaleDateString()}</time>
+    <Content/>
 </article>
-
+</div>
 </Layout>
