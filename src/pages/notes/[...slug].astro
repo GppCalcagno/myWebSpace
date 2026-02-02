@@ -8,7 +8,7 @@ export async function getStaticPaths() {
   
   // 2. Per OGNI post, crea un percorso
   return notes.map(entry => ({
-    params: { slug: entry.id },  // URL: /notes/note1
+    params: { slug: entry.data.title },  // URL: /notes/note1
     props: { entry }             // Passa i dati alla pagina
   }));
 }

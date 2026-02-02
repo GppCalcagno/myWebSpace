@@ -15,17 +15,12 @@ console.log(notesCollection)
 	
 	<h1 class="text-5xl">This is a test page</h1>
 	<h1 class="text-5xl">This is a test page</h1>
-	<h1 class="text-5xl">This is a test page</h1>
-	<h1 class="text-5xl">This is a test page</h1>
-	<h1 class="text-5xl">This is a test page</h1>
-	<h1 class="text-5xl">This is a test page</h1>
-	<h1 class="text-5xl">This is a test page</h1>
-	<h1 class="text-5xl">This is a test page</h1>
+
     <ul>
         {   
             notesCollection.map((i)=> (
         <li>
-            <a href={"/notes/"+i.id}>{i.id} </a>
+            <a href={"/notes/"+i.data.title}>{i.data.title} </a>
         </li>
         
         ))

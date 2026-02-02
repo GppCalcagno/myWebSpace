@@ -23,18 +23,8 @@ But first of all, I need to define the container for all this information: **my 
 
 There are lots of definitions and variations on the theme, but in my opinion, after a while, we’re all just diverging in how we express the same core idea:  **“I like to put random but reachable stuff on my webspace.”** Let’s get back on track.
 
-<!-- <figure style={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
-    <Image
-        src="/blog/on_the_existence_of_this_space/digital_gardern_gradiant.png"
-        width="718"
-        height="404"
-        alt="Digital Garden Gradient"
-        sizes="100vw"
-    />
-    <figcaption style={{ textAlign: "center", fontSize: "0.95em", color: "#666" }}>
-        Note organization gradient from [this other one](https://maggieappleton.com/garden-history)
-    </figcaption>
-</figure> -->
+![website_gardern_gradiant](./digital_gardern_gradiant.png)
+
 
 # Why
 

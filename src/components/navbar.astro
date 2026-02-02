@@ -7,8 +7,24 @@ import  LogoImg  from '../assets/logo1.png'
 ---
 <header class="h-13 sm:h-15 p-1 content-center  shrink-0 border-b border-gray-200">
     <nav class="flex px-3 justify-between items-center">
-        <div> <a href="/"><Image  src={LogoImg}  alt="navbar logo" class="w-19 sm:w-22"/> </a>
-        </div>
+
+        <div class="flex items-center">
+            <a href="/" class="group flex items-center gap-3">
+                <!-- Immagine Logo con transizione -->
+                <Image 
+                    src={LogoImg} 
+                    alt="PeppOS logo" 
+                    class="w-16 sm:w-20 transition-transform duration-300 group-hover:scale-110" 
+                />
+                
+                <!-- Testo Stile Terminale -->
+                <div class="hidden md:flex items-center  text-xl sm:text-2xl font-bold tracking-tighter text-gray-800">
+                    <span class="text-green-600 mr-1">&gt;</span> <!-- Prompt verde -->
+                    PeppOS
+                    <span class="ml-1 w-2.5 h-5 bg-gray-800 animate-pulse"></span> <!-- Cursore lampeggiante -->
+                </div>
+            </a>
+        </div>        
         <div class = "">
             <ul class="flex gap-4 sm:gap-7">
                 <li> <a href="/timeline/" class="btn_navbar">  Timeline/ </a></li>

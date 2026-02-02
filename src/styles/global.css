@@ -15,6 +15,14 @@ utilities → classi singole (text-sm, p-4, bg-red-500)
     @apply font-mono;
     
   }
+
+  p{
+    @apply my-1
+  }
+
+  h1{
+    @apply my-4 text-3xl
+  }
 }
 
 @layer components {
