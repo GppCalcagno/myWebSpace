@@ -1,7 +1,11 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import FitnessCardS from '../components/fitness_card.astro';
 import {AboutMe_data} from '../content/static_pages/abouteMe'
 
+
+
+console.log(AboutMe_data)
 ---
 
 <Layout>
@@ -47,8 +51,31 @@ import {AboutMe_data} from '../content/static_pages/abouteMe'
 		</li>
 	</ul>
 
+	<h1>Muscle Memories</h1>
+	<p>
+		Throughout my life, I’ve dedicated a lot of time to practicing sports. Like most children, I started with <b>football</b>, and I still enjoy playing casual matches with friends. 
+		Later, I switched to rowing for a few years. However, the early morning training sessions were too much for me. Still, my love for water sports remained, so I moved on to <b>swimming</b>. 
+		I’d say I was quite good at it and I even had the chance to compete.
+	</p>
+	<p>
+		When I moved to my current city, a new sports chapter began. These days, I focus on <b>going to the gym</b>, practicing calisthenics in open-air parks, <b>running</b>, and <b>bouldering</b>. 
+		Here are some key record metrics from my training:
+	</p>
+	<div class="flex flex-col sm:flex-row items-center justify-evenly gap-4 p-2">
+		<FitnessCardS 
+			title="🏃 Running" 
+			titleClass ="text-red-600"
+			items={AboutMe_data.fitness.running} 
+		/>
 
-	<h1>Miscellaneous</h1>
+		<FitnessCardS 
+			title="🏋️ Lifting"
+			titleClass ="text-blue-600"
+			items={AboutMe_data.fitness.lifting} 
+		/>
+	</div>
+
+	<h2 class="text-2xl py-3 ">Miscellaneous</h2>
 	<p>
 		This is the drawer where I keep everything that doesn’t fit neatly elsewhere. On <i>“a day that doesn’t rain much,”</i> I’ll fill this part with interesting information.
 	</p>

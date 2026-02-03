@@ -1,5 +1,6 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import UpdateTicker from '../components/update_ticker.astro';
 
 
 import { getCollection } from 'astro:content';
@@ -13,9 +14,17 @@ console.log(notesCollection)
 
 <Layout >
 	
-	<h1 class="text-5xl">This is a test page</h1>
-	<h1 class="text-5xl">This is a test page</h1>
+<p> 
+    I’m a Computer  Science Engineer passionate about coding. I like computers, problems, and using the former to solve the latter. 
+    This is my corner of the internet where I share what I learn, think, and sometimes do.
+</p>
 
+<p class="mt-2">Last Updates: </p>
+<UpdateTicker/>
+
+
+
+<h1>My Notes</h1>
     <ul>
         {   
             notesCollection.map((i)=> (
@@ -26,4 +35,6 @@ console.log(notesCollection)
         ))
         }
     </ul>
+
+
 </Layout>

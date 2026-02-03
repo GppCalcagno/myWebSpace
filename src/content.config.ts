@@ -1,5 +1,5 @@
 import { defineCollection } from 'astro:content';
-import { glob } from 'astro/loaders'; //libreria built-in che si occupa di 
+import { glob } from 'astro/loaders'; //libreria built-in che si occupa di caricare i files 
 import { z } from 'astro/zod'; //parcer
 
 

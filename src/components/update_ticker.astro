@@ -1,0 +1,53 @@
+---
+const updates = [
+  { date: "14/02", type: "DEV", text: "First Deploy" },
+  { date: "10/02", type: "NOT", text: "Pub: On the existing of this space" },
+  { date: "03/02", type: "DEV", text: "Creation of the homepage" },
+];
+---
+<!-- Wrapper esterno -->
+<div class="overflow-hidden">
+  
+  <div class="ticker-track flex gap-8 flex-1">
+    
+    <!-- Renderizziamo gli stessi dati 2 volte per coprire lo schermo e creare il loop -->
+    {[...updates, ...updates,].map((item) => (
+      <div class="flex items-center gap-3 whitespace-nowrap">
+        <span class="text-xs text-gray-500">{item.date}</span>
+        <span class="font-bold text-xs px-1">{item.type}</span>
+        <span class="text-sm">{item.text}</span>
+      </div>
+    ))}
+
+  </div>
+</div>
+
+<style>
+  .ticker-track {
+    animation: scroll 50s linear infinite;
+  }
+
+  @keyframes scroll {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); } 
+  }
+</style>
+
+<!--
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-4">
+  {updates.map((item) => (
+    <div class="group"> 
+      <div class="flex items-center gap-3 mb-1 text-xs font-mono text-gray-400">
+        <span>{item.date}</span>
+        <span class="w-1 h-1 rounded-full bg-gray-300"></span> 
+        <span class="tracking-widest uppercase">{item.type}</span>
+      </div>
+
+      <p class="text-sm text-gray-800 group-hover:text-black transition-colors">
+        {item.text}
+      </p>
+
+    </div>
+  ))}
+</div>
+ -->
