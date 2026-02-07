@@ -1,0 +1,75 @@
+---
+import { Icon } from 'astro-icon/components';
+import type { Project } from '../content/static_pages/projects.ts'; 
+
+interface Props {
+  project: Project; // o definisci la struttura qui se non hai un tipo esportato
+}
+
+// Estraggo la prop 'project' per usarla nel template
+const { project } = Astro.props;
+---
+
+
+<div class="project-item relative pl-10 pb-7 last:pb-0 group" data-class={project.class}>
+    
+    {/* Linea verticale */}
+    <div class="absolute left-2.75 top-2 bottom-0 w-px bg-gray-200"></div>
+
+    {/* Icona Timeline */}
+    <div class="absolute -left-2 w-10 h-10 rounded-md border border-gray-200 bg-white flex items-center justify-center shadow-sm group-hover:border-gray-400 group-hover:shadow-md transition-all">
+        <Icon name={project.iconPath || "projects/default_project"} class="w-6 h-6 text-gray-500 group-hover:text-black transition-colors" />
+    </div>
+
+    <div class="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-3">
+        <div class="grow">
+            
+            {/* HEADER: [Anno] Titolo */}
+            <div class="flex flex-col sm:flex-row items-baseline gap-2 mb-1">
+                <span class="text-xs text-gray-500 border border-gray-200 px-1.5 rounded shrink-0">
+                    {project.year}
+                </span>
+                <h3 class="text-md font-bold text-gray-900 leading-tight">{project.title}</h3>
+            </div>
+            
+            {/* Descrizione */}
+            <p class="text-sm text-gray-600 mb-3 border-gray-100 pl-1 transition-colors group-hover:border-gray-300">
+                {project.description}
+            </p>
+
+            {/* FOOTER: Classe | Tags */}
+            <div class="flex items-center gap-1 mb-1">
+                {/* Classe */}
+                <span class="font-medium text-gray-400 uppercase tracking-wider text-[10px]"> {project.class} </span>
+
+                <span class="text-gray-300 text-[10px]">|</span>  {/* Separatore verticale */}
+
+                <div class="flex flex-wrap gap-2"> {/* Tags */}
+                    {project.tag.map((t) => (
+                        <span class="text-[10px]  text-gray-500 bg-gray-50 px-2 py-0.5 rounded border border-gray-100 group-hover:border-gray-200"> #{t} </span>
+                    ))}
+                </div>
+            </div>
+
+        </div>
+
+        {/* Link Actions */}
+        <div class="flex gap-2 sm:ml-4 shrink-0">
+            {project.githubLink && (
+                <a href={project.githubLink} target="_blank" rel="noreferrer" class="p-1.5 text-gray-400 hover:text-black border border-gray-100 rounded hover:bg-white hover:border-gray-300 transition-all" aria-label="GitHub Repo">
+                    <Icon name="simple-icons--refinedgithub" class="w-4 h-4" />
+                </a>
+            )}
+            {project.extLink && (
+                <a href={project.extLink} target="_blank" rel="noreferrer" class="p-1.5 text-gray-400 hover:text-black border border-gray-100 rounded hover:bg-white hover:border-gray-300 transition-all" aria-label="Live Demo">
+                    <Icon name="external-link-svgrepo-com" class="w-4 h-4" />
+                </a>
+            )}
+            {project.blogLink && (
+                <a href={project.blogLink} class="p-1.5 text-gray-400 hover:text-black border border-gray-100 rounded hover:bg-white hover:border-gray-300 transition-all" aria-label="Blog Post">
+                    <Icon name="notes-svgrepo-com" class="w-4 h-4" />
+                </a>
+            )}
+        </div>
+    </div>
+</div>

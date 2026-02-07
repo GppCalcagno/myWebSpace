@@ -1,8 +1,89 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import { projectsData } from '../content/static_pages/projects.ts';
+import ArticleCard from '../components/project_card.astro';
 
+
+// Ottengo le categorie uniche dai dati e aggiungo "All" all'inizio
+const allCategories = ['All', ...new Set(projectsData.map((p) => p.class))];
 ---
 
 <Layout>
-	<h1>projects</h1>
+    <div class="max-w-3xl mx-auto py-10 px-4 sm:px-0">
+        
+        <h1 class="text-3xl font-bold mb-4 text-gray-900">Some Things I’ve Built</h1>
+        <p class="text-gray-700 mb-2 leading-relaxed">
+            I love automating things and I'm always full of ideas. Sometimes I get so excited about one that I just have to build it!
+        </p>
+        <p class="text-sm text-gray-500 pb-3">
+             From Software Engineering to Machine Learning — and everything in between...
+        </p>
+
+        <!-- FILTRO:  -->
+        <div class="flex flex-wrap items-baseline gap-1 mb-5 text-sm select-none" id="filter-container">
+            <span class="text-gray-400 mr-2">&gt; filter:</span>
+            {allCategories.map((category, index) => (
+                <button 
+                    class="filter-btn px-2 py-1 hover:text-black transition-colors relative group focus:outline-none"
+                    data-category={category}
+                >
+                    <span class={`active-marker text-gray-900 font-bold ${index === 0 ? '' : 'hidden'}`}>[</span>
+                    <span class={`btn-text group-hover:text-gray-900 ${index === 0 ? 'text-gray-900 font-bold' : 'text-gray-500'}`}>
+                        {category}
+                    </span>
+                    <span class={`active-marker text-gray-900 font-bold ${index === 0 ? '' : 'hidden'}`}>]</span>
+                </button>
+            ))}
+        </div>
+
+        <!-- LISTA PROGETTI -->
+        <div class="flex flex-col space-y-5">
+            <div class="flex flex-col gap-2">
+                {projectsData.map((project) => (
+                    <ArticleCard project={project}/>
+                ))}
+            </div>
+        </div>
+
+    </div>
 </Layout>
+
+<script>
+    const buttons = document.querySelectorAll('.filter-btn');
+    const projects = document.querySelectorAll('.project-item');
+
+    buttons.forEach(button => {
+        button.addEventListener('click', () => {
+			
+            // Reset visivo
+            buttons.forEach(btn => {
+                btn.querySelectorAll('.active-marker').forEach(el => el.classList.add('hidden'));
+                const text = btn.querySelector('.btn-text');
+                if(text) {
+                    text.classList.remove('text-gray-900', 'font-bold');
+                    text.classList.add('text-gray-500');
+                }
+            });
+
+            // Attiva bottone
+            button.querySelectorAll('.active-marker').forEach(el => el.classList.remove('hidden'));
+            const activeText = button.querySelector('.btn-text');
+            if(activeText) {
+                activeText.classList.remove('text-gray-500');
+                activeText.classList.add('text-gray-900', 'font-bold');
+            }
+
+            // Filtra progetti
+            const category = button.getAttribute('data-category');
+            projects.forEach(p => {
+                const projectEl = p as HTMLElement;
+                const projectClass = projectEl.getAttribute('data-class');
+                if (category === 'All' || projectClass === category) {
+                    projectEl.style.display = 'block';
+                } else {
+                    projectEl.style.display = 'none';
+                }
+            });
+        });
+    });
+</script>

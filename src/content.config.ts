@@ -16,5 +16,7 @@ const noteCollection = defineCollection({
 
 })
 
+
+
 //this must be written like this export const collections = {[name]: [Mycollection]}
 export const collections = { notes: noteCollection};

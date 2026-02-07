@@ -1,11 +1,11 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import FitnessCardS from '../components/fitness_card.astro';
-import {AboutMe_data} from '../content/static_pages/abouteMe'
+import {aboutMeData} from '../content/static_pages/abouteMe'
 
 
 
-console.log(AboutMe_data)
+console.log(aboutMeData)
 ---
 
 <Layout>
@@ -29,7 +29,7 @@ console.log(AboutMe_data)
 		<li>
 			In addition to my main job, I enjoy exploring new ideas through <b>personal side projects</b>. 
 			These projects allow me to experiment with technologies I’m passionate about and continue learning outside of work.
-			Currently, I’m dedicating my free time to building <i>{AboutMe_data.current_side_project}</i>.
+			Currently, I’m dedicating my free time to building <i>{aboutMeData.current_side_project}</i>.
 		</li>
 	</ul>
 
@@ -65,15 +65,17 @@ console.log(AboutMe_data)
 		<FitnessCardS 
 			title="🏃 Running" 
 			titleClass ="text-red-600"
-			items={AboutMe_data.fitness.running} 
+			items={aboutMeData.fitness.running} 
 		/>
 
 		<FitnessCardS 
 			title="🏋️ Lifting"
 			titleClass ="text-blue-600"
-			items={AboutMe_data.fitness.lifting} 
+			items={aboutMeData.fitness.lifting} 
 		/>
 	</div>
+
+	<!-- TODO: libreria -->
 
 	<h2 class="text-2xl py-3 ">Miscellaneous</h2>
 	<p>

@@ -1,4 +1,4 @@
-export const AboutMe_data = {
+export const aboutMeData = {
   current_side_project: "this webSpace",
   role: "Computer Science Engineer",
   
