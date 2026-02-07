@@ -1,9 +1,9 @@
 ---
 title: "On the existence of this Space"
-tags: [digital garden,thoughts]
-date: 2025-06-03 
+category: mind log
+tags: [brainDump]
+date: 2025-06-03
 ispublic: true
-
 ---
 
 

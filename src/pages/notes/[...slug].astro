@@ -3,7 +3,7 @@ import { getCollection, render } from 'astro:content';
 import Layout from '../../layouts/Layout.astro';
 
 export async function getStaticPaths() {
-  // 1. Prendi TUTTI i tuoi post dalla collection
+  // 1. Prendi TUTTI i  post dalla collection
   const notes = await getCollection('notes', ({ data }) => data.ispublic);
   
   // 2. Per OGNI post, crea un percorso
@@ -15,11 +15,13 @@ export async function getStaticPaths() {
 
 // Astro.props contiene i dati da getStaticPaths()
 const { entry } = Astro.props;
-
-// Renderizza il Markdown in un componente Astro
 const { Content } = await render(entry);
 ---
+
 <Layout>
+<!-- TODO: aggiustare una grafica -->
+ <!-- TODO: aggiustare tipogragpy  -->
+
 <div class="flex justify-cente">
 <article class="prose max-w-2xl mx-auto">
     <h1>{entry.data.title}</h1>

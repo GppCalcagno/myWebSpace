@@ -5,9 +5,9 @@ import { z } from 'astro/zod'; //parcer
 
 const noteCollection = defineCollection({
       loader: glob({ pattern: "**/*.md", base: "./src/content/notes/" }),
-      
       schema: z.object({
         title:z.string(),
+        category:z.string(),
         tags: z.array(z.string()),
         date: z.coerce.date(),  // coerce converte stringhe in Date
         ispublic: z.boolean().default(false),
