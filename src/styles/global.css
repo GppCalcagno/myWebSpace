@@ -26,7 +26,7 @@ utilities → classi singole (text-sm, p-4, bg-red-500)
 }
 
 @layer components {
-    .btn_navbar { @apply items-center sm:text-lg hover:underline underline-offset-2 transition-transform hover:-translate-y-1 inline-block }
+    .btn_navbar { @apply items-center text-sm sm:text-base  hover:underline underline-offset-2 transition-transform hover:-translate-y-1 inline-block }
 
 }
 
