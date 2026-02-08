@@ -1,0 +1,15 @@
+# robots.txt per MyWebSpace
+
+# Permetti a tutti i crawler di indicizzare tutto il sito
+User-agent: *
+Allow: /
+
+# Sitemap principale
+Sitemap: https://peppos.dev/sitemap-index.xml
+
+# Opzionale: blocca eventuali endpoint API se li aggiungi
+# Disallow: /api/
+
+# Crawl-delay per bot aggressivi (opzionale)
+# User-agent: *
+# Crawl-delay: 5
