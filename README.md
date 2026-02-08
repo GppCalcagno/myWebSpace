@@ -22,7 +22,6 @@ Welcome to the source code of my personal website. This space serves as my digit
 
 The core structure is in place. These are the planned improvements and features to be added as time allows:
 
-- [ ] Purchase custom domain
 - [ ] Add newsletter signup \ Add RSS feed
 - [ ] Implement SEO optimization
 - [ ] Create notes archive page (after 10 blog post)
