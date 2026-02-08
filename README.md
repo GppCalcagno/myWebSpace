@@ -44,7 +44,7 @@ This project is inspired and informed by several fantastic resources. Here are s
 To run this project locally:
 
 ```bash
-git clone <your-repo-url>
+git clone https://github.com/GppCalcagno/myWebSpace.git
 cd myWebSpace
 npm install
 npm run dev
@@ -57,5 +57,4 @@ Visit `http://localhost:4321` in your browser.
 This is a personal site, but suggestions and ideas are welcome! Feel free to open an issue if you spot something that could be improved.
 
 ## 📄 License
-
-Personal project - all content is mine unless otherwise specified. 
+TBD
