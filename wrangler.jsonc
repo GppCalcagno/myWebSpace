@@ -17,6 +17,10 @@
     {
       "pattern": "peppos.dev",
       "custom_domain": true
+    },
+    {
+      "pattern": "www.peppos.dev",
+      "custom_domain": true
     }
   ]
 }
