@@ -12,6 +12,12 @@
 	},
 	"observability": {
     "enabled": true
-  }
+  },
+  "routes": [
+    {
+      "pattern": "shop.example.com",
+      "custom_domain": true
+    }
+  ]
 }
 
