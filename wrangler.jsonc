@@ -1,6 +1,6 @@
 {
 	"main": "dist/_worker.js/index.js",
-	"name": "mywebspace",
+	"name": "peppos",
   "compatibility_date": "2026-02-07",
   "compatibility_flags": [
     "nodejs_compat",
