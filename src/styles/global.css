@@ -17,7 +17,11 @@ utilities → classi singole (text-sm, p-4, bg-red-500)
   }
 
   p{
-    @apply my-1
+    @apply my-1 text-gray-800
+  }
+
+  li{
+    @apply text-gray-800
   }
 
   h1{
@@ -28,6 +32,19 @@ utilities → classi singole (text-sm, p-4, bg-red-500)
 @layer components {
     .btn_navbar { @apply items-center text-sm sm:text-base  hover:underline underline-offset-2 transition-transform hover:-translate-y-1 inline-block }
 
+    /* Article/Note styling */
+    .prose-article {
+      @apply prose prose-gray max-w-none;
+      @apply prose-headings:font-bold;
+      @apply prose-h1:text-3xl prose-h1:mb-6 prose-h1:mt-8;
+      @apply prose-h2:text-2xl prose-h2:mt-6;
+      @apply prose-h3:text-xl;
+      @apply prose-p:text-gray-700 prose-p:leading-relaxed;
+      @apply prose-a:text-blue-700 prose-a:no-underline hover:prose-a:underline;
+      @apply prose-img:rounded-lg prose-img:mx-auto;
+      @apply prose-code:text-sm prose-code:bg-gray-100 prose-code:px-1 prose-code:py-0.5 prose-code:rounded;
+    }
+
 }
 
 
@@ -35,7 +52,7 @@ utilities → classi singole (text-sm, p-4, bg-red-500)
 /* TODO: study themes */
 @theme {
   /* ... */
-  --color-background: #FAFAFA;
+  --color-background: #fefff0;
 
 }
 

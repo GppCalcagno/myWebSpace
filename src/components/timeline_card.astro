@@ -1,0 +1,34 @@
+---
+import type { Milestone } from '../content/static_pages/timelineEntry';
+import { MILESTONE_COLORS } from '../content/static_pages/timelineEntry';
+
+interface Props {
+  milestone: Milestone;
+}
+
+const { milestone } = Astro.props;
+---
+
+
+<div class="mb-2 group/card inline-block font-mono max-w-full">
+  <div class="py-1.5 px-2 hover:bg-gray-100/50 transition-colors">
+
+    <!-- Layout unificato -->
+    <div class="flex flex-wrap items-baseline gap-x-2 gap-y-1 mb-0.5">
+      <span class={`text-xs font-bold uppercase ${MILESTONE_COLORS[milestone.class].text} shrink-0`}>
+        [{milestone.class}]
+      </span>
+      <div class="text-sm font-semibold text-gray-900 flex-1 min-w-0">
+        {milestone.title}
+      </div>
+      <span class="text-[10px] text-gray-400 basis-full sm:basis-auto shrink-0 pl-1 sm:pl-0">
+        {milestone.date.toLocaleDateString('en-US', {month: 'short', day: 'numeric',year: '2-digit'})}
+      </span>
+    </div>
+    
+    <!-- Description -->
+    <div class="text-xs text-gray-600 leading-relaxed pl-1">
+      {milestone.description}
+    </div>
+  </div>
+</div>
