@@ -15,7 +15,7 @@
   },
   "routes": [
     {
-      "pattern": "shop.example.com",
+      "pattern": "peppos.dev",
       "custom_domain": true
     }
   ]
