@@ -8,30 +8,30 @@ import { getCollection } from 'astro:content';
 const notesCollection = await getCollection('notes', ({ data }) => data.ispublic);
 notesCollection.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
 
-console.log(notesCollection)
-
 ---
 
 <Layout >
     <h1>Welcome 👋</h1>
-        <p> 
-            I’m a Computer  Science Engineer passionate about coding. I like computers, problems, and using the former to solve the latter. 
-            This is my corner of the internet where I share what I learn, think, and sometimes do.
-        </p>
+    <p> 
+        I'm a Computer Science Engineer passionate about coding. I like computers, problems, and using the former to solve the latter. 
+        This is my corner of the internet where I share what I learn, think, and sometimes do.
+    </p>
 
-    <p class="mt-2">Last Updates: </p>
-    <UpdateTicker/>
+    <div class="mt-6 mb-6">
+        <h2 class="text-xl font-semibold mb-2">Recent Activity</h2>
+        <UpdateTicker/>
+    </div>
 
     <h1>My Notes</h1>
-        <p> 
-            Here are the latest brain dumps I felt were worth the effort for me to write, and hopefully for you to read!
-        </p>
+    <p> 
+        Brain dumps worth the effort for me to write, and hopefully for you to read.
+    </p>
 
     <div class="grid gap-4 pt-3">
-    {notesCollection.map((note) => (
-        // TODO: a 10 note fare archivio. 
-        <NoteCard post={note} />
-    ))}
+        
+        {notesCollection.map((note) => (
+            <NoteCard post={note} />
+        ))}
     </div>
 
 </Layout>

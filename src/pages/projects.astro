@@ -10,16 +10,16 @@ const allCategories = ['All', ...new Set(projectsData.map((p) => p.class))];
 
 <Layout>
         
-    <h1>Some Things I’ve Built</h1>
-    <p class="text-gray-700 mb-2">
+    <h1>Some Things I’ve Built 🏗️</h1>
+    <p class="mb-2">
         I love automating things and I'm always full of ideas. Sometimes I get so excited about one that I just have to build it!
     </p>
-    <p class="text-sm text-gray-500 mb-2">
+    <p class="text-sm text-gray-500 mb-3">
             From Software Engineering to Machine Learning — and everything in between...
     </p>
 
     <!-- FILTRO:  -->
-    <div class="flex flex-wrap items-baseline gap-1 mb-5 text-sm select-none" id="filter-container">
+    <div class="flex flex-wrap items-baseline gap-1 mb-6 text-sm select-none" id="filter-container">
         <span class="text-gray-400 mr-2">&gt; filter:</span>
         {allCategories.map((category, index) => (
             <button 
@@ -36,8 +36,8 @@ const allCategories = ['All', ...new Set(projectsData.map((p) => p.class))];
     </div>
 
     <!-- LISTA PROGETTI -->
-    <div class="flex flex-col space-y-5">
-        <div class="flex flex-col gap-2">
+    <div class="flex flex-col space-y-6">
+        <div class="flex flex-col">
             {projectsData.map((project) => (
                 <ArticleCard project={project}/>
             ))}

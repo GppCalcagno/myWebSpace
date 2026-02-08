@@ -3,30 +3,72 @@ import { getCollection, render } from 'astro:content';
 import Layout from '../../layouts/Layout.astro';
 
 export async function getStaticPaths() {
-  // 1. Prendi TUTTI i  post dalla collection
   const notes = await getCollection('notes', ({ data }) => data.ispublic);
   
-  // 2. Per OGNI post, crea un percorso
   return notes.map(entry => ({
-    params: { slug: entry.data.title },  // URL: /notes/note1
-    props: { entry }             // Passa i dati alla pagina
+    params: { slug: entry.data.title },
+    props: { entry }
   }));
 }
 
-// Astro.props contiene i dati da getStaticPaths()
 const { entry } = Astro.props;
 const { Content } = await render(entry);
+
+const formattedDate = entry.data.date.toLocaleDateString('en-US', {
+  year: 'numeric',
+  month: 'long',
+  day: 'numeric'
+});
 ---
 
 <Layout>
-<!-- TODO: aggiustare una grafica -->
- <!-- TODO: aggiustare tipogragpy  -->
+  <div class="max-w-2xl mx-auto">
+    
+    <!-- Header: Metadata + Back Link -->
+    <div class="mb-6 flex flex-col-reverse sm:flex-row sm:justify-between sm:items-start gap-4">
+      
+      <!-- Metadata -->
+      <div>
+        <div class="flex flex-wrap items-center gap-2 text-xs text-gray-500 mb-2">
+          <time class="font-mono">{formattedDate}</time>
+          <span class="text-gray-300">•</span>
+          <span class="uppercase tracking-wide">{entry.data.category}</span>
+        </div>
+        
+        <!-- Tags -->
+        <div class="flex flex-wrap gap-2">
+          {entry.data.tags.map((tag) => (
+            <span class="text-xs font-mono text-gray-600 bg-gray-100 px-2 py-0.5 rounded">
+              #{tag}
+            </span>
+          ))}
+        </div>
+      </div>
 
-<div class="flex justify-cente">
-<article class="prose max-w-2xl mx-auto">
-    <h1>{entry.data.title}</h1>
-    <time>{entry.data.date.toLocaleDateString()}</time>
-    <Content/>
-</article>
-</div>
+      <!-- Back Link -->
+      <div class="shrink-0">
+        <a href="/" class="text-sm text-gray-600 hover:text-gray-900 font-mono">
+          Back to home →
+        </a>
+      </div>
+
+    </div>
+
+    <!-- Article Content -->
+    <article class="prose-article">
+      <h1>{entry.data.title}</h1>
+      <Content />
+    </article>
+
+    <div class="text-right">
+      PeppOS
+    </div>
+
+    <!-- Back Link -->
+    <div class="mt-6 pt-6 text-right">
+      <a href="/" class="text-sm text-gray-600 hover:text-gray-900 font-mono">
+        Back to home →
+      </a>
+    </div>
+  </div>
 </Layout>
