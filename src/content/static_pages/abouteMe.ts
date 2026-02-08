@@ -11,7 +11,7 @@ export const aboutMeData = {
     running: [
       { name: "5  Km", value: "26:01" },
       { name: "10 Km", value: "54:00" },
-      { name: "Half Mar", value: "02:08:00" },
+      { name: "Half Mar", value: "02:02:15" },
     ]
   }
 
