@@ -1,0 +1,123 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { libraryData } from '../content/static_pages/library.ts';
+import BookCard from '../components/book_card.astro';
+
+// Sort books by finish date (most recent first)
+const sortedBooks = [...libraryData].sort((a, b) => b.Finished.valueOf() - a.Finished.valueOf());
+
+// Calculate available years
+const years = [...new Set(sortedBooks.map(book => book.Finished.getFullYear()))].sort((a, b) => a - b);
+const minYear = Math.min(...years);
+const maxYear = Math.max(...years);
+
+// Statistics
+const totalBooks = libraryData.length;
+---
+
+<Layout>
+    <h1>My Library 🔎</h1>
+    <p class="mb-4">
+        I read in both English and my native language, mostly essays on self-improvement and tech. 
+        Following the exploration vs. exploitation dilemma, I sometimes pick books I know I'll hate. Turns out, that's where the interesting stuff happens.
+
+    </p>
+    <p class="text-sm text-gray-500 mb-6">
+        I've started tracking my reading since 2021.
+    </p>
+
+    <!-- LAYOUT: Filters + Counter -->
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
+        
+        <!-- LEFT: Filters -->
+        <div class="space-y-4">
+            
+            <!-- My Selection Filter (McDonald's style) -->
+            <label class="flex items-center gap-3 cursor-pointer select-none group">
+                <input 
+                    type="checkbox" 
+                    id="filter-best" 
+                    class="sr-only peer"
+                />
+                <span class="text-3xl grayscale opacity-70 transition-all group-hover:opacity-80 peer-checked:grayscale-0 peer-checked:opacity-100">🍔</span>
+                <span class="font-medium text-gray-700">My Selection</span>
+            </label>
+
+            <!-- Year Slider -->
+            <div class="space-y-2">
+                <div class="flex items-center gap-3">
+                    <label for="year-slider" class="text-sm text-gray-600 shrink-0">
+                        From: <strong id="year-display" class="text-gray-900">{minYear}</strong>
+                    </label>
+                    <div class="flex-1 flex gap-2 items-center justify-end">
+                        <input 
+                            type="range" 
+                            id="year-slider" 
+                            min={minYear} 
+                            max={maxYear} 
+                            value={minYear}
+                            class="flex-1 h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer accent-gray-900"
+                        />
+                        <span class="text-xs text-gray-500 shrink-0">{maxYear}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- RIGHT: Counter -->
+        <div class="flex items-center justify-center lg:justify-end">
+            <div class="text-4xl sm:text-5xl font-semibold">
+                <span id="books-counter">{totalBooks}</span> 📚 Read
+            </div>
+        </div>
+        
+    </div>
+
+    <!-- BOOKS LIST -->
+    <div class="flex flex-col space-y-2 sm:px-5" id="books-list">
+        {sortedBooks.map((book) => (
+            <BookCard book={book} />
+        ))}
+    </div>
+
+    <!-- No results message -->
+    <div id="no-results" class="hidden text-center py-12 text-gray-400">
+        <p class="text-lg">No books found with these filters 🤷</p>
+    </div>
+
+</Layout>
+
+<script>
+    const filterBest = document.getElementById('filter-best') as HTMLInputElement;
+    const yearSlider = document.getElementById('year-slider') as HTMLInputElement;
+    const yearDisplay = document.getElementById('year-display')!;
+    const booksCounter = document.getElementById('books-counter')!;
+    const booksList = document.getElementById('books-list')!;
+    const noResults = document.getElementById('no-results')!;
+    const maxYear = parseInt(yearSlider.max);
+
+    function updateDisplay() {
+        const yearStart = parseInt(yearSlider.value);
+        yearDisplay.textContent = yearStart.toString();
+
+        const bookItems = document.querySelectorAll('.book-item') as NodeListOf<HTMLElement>;
+        let visibleCount = 0;
+
+        bookItems.forEach(item => {
+            const year = parseInt(item.dataset.year || '0');
+            const vote = parseInt(item.dataset.vote || '0');
+            const matches = year >= yearStart && year <= maxYear && (!filterBest.checked || vote === 5);
+            
+            item.style.display = matches ? '' : 'none';
+            if (matches) visibleCount++;
+        });
+
+        booksCounter.textContent = visibleCount.toString();
+        booksList.classList.toggle('hidden', visibleCount === 0);
+        noResults.classList.toggle('hidden', visibleCount > 0);
+    }
+
+    filterBest.addEventListener('change', updateDisplay);
+    yearSlider.addEventListener('input', updateDisplay);
+    updateDisplay();
+</script>

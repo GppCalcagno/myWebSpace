@@ -1,0 +1,77 @@
+---
+import { Icon } from 'astro-icon/components';
+import type { book } from '../content/static_pages/library'; 
+
+interface Props {
+  book: book;
+}
+
+const { book } = Astro.props;
+
+// Calculate reading duration in days
+const durationDays = Math.ceil((book.Finished.getTime() - book.Started.getTime()) / (1000 * 60 * 60 * 24));
+
+---
+
+<div class="book-item relative pl-10 pb-7 group" data-year={book.Finished.getFullYear()} data-vote={book.Vote}>
+    
+    {/* Linea verticale */}
+    <div class="absolute left-2.75 top-2 bottom-0 w-px bg-gray-200"></div>
+
+    {/* Icona Timeline */}
+    <div class="absolute -left-2 w-10 h-10 rounded-md border border-gray-200 bg-white flex items-center justify-center shadow-sm group-hover:border-gray-400 group-hover:shadow-md transition-all">
+        <Icon name="book-book-svgrepo-com" class="w-6 h-6 text-gray-500 group-hover:text-black transition-colors" />
+    </div>
+
+    <div class="flex gap-4">
+        <div class="flex-1 flex flex-col gap-2">
+            <div class="grow">
+                
+                {/* HEADER: Year and Title */}
+                <div class="flex flex-col sm:flex-row items-baseline gap-2 mb-1">
+                    <span class="text-xs text-gray-500 border border-gray-200 px-1.5 rounded shrink-0">
+                        {book.Finished.getFullYear()}/{book.Finished.getMonth()}
+                    </span>
+                    <h3 class="text-md font-bold text-gray-900 leading-tight">{book.name}</h3>
+                </div>
+                
+                {/* Author */}
+                <p class="text-sm text-gray-600 mb-2 pl-1">{`by ${book.Author}`}</p>
+
+                {/* INFO ROW: Pages | Duration | Rating */}
+                <div class="flex flex-wrap items-center gap-3 text-xs text-gray-500 pl-1">
+                    <span>📃 {book.Pages} pp.</span>
+                    <span>🗓️ {durationDays} days</span>
+                    <span>⭐{book.Vote} </span>
+                </div>
+
+            </div>
+
+            {/* ISBN Link (optional) */}
+            <div class="flex gap-2 shrink-0 pl-1">
+                <a 
+                    href={`https://www.google.com/search?q=${book.ISBN13}`} 
+                    target="_blank" 
+                    rel="noreferrer" 
+                    class="text-xs text-gray-400 hover:text-black transition-colors"
+                    aria-label="Search book"
+                >
+                    ISBN: {book.ISBN13}
+                </a>
+            </div>
+        </div>
+
+        {/* Book Cover - Only for 5-star books */}
+        {book.Vote === 5 && book.ISBN13 && (
+            <div class="w-16 h-24 shrink-0 overflow-hidden rounded shadow-sm">
+                <img 
+                    loading="lazy"
+                    src={`https://covers.openlibrary.org/b/isbn/${book.ISBN13}-.jpg`}
+                    alt={`${book.name} cover`}
+                    class="w-full h-full object-cover" 
+                    onerror="this.style.display='none'"
+                />
+            </div>
+        )}
+    </div>
+</div>
