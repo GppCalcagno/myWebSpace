@@ -28,6 +28,9 @@ Questo documento traccia tutte le best practice mancanti e le priorità di imple
 
 ### FASE 1: FONDAMENTALI CRITICI (1-2 settimane)
 
+ 
+- [ ] Aggiungere bookshelf
+ 
 #### 1.1 Implementare SEO Completo
 Status: Not Started | Priorità: CRITICA
 
