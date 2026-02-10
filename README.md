@@ -26,7 +26,6 @@ The core structure is in place. These are the planned improvements and features 
 - [ ] Implement SEO optimization
 - [ ] Create notes archive page (after 10 blog post)
 - [ ] Implement dark mode toggle
-- [ ] Add bookshelf
 - [ ] Implement Table of Contents for long posts
 - [ ] Fix image description in blog post
 
