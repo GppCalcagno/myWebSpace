@@ -8,7 +8,10 @@ import ArticleCard from '../components/project_card.astro';
 const allCategories = ['All', ...new Set(projectsData.map((p) => p.class))];
 ---
 
-<Layout>
+<Layout
+  title="Projects | PeppOS"
+  description="Explore my portfolio of projects: from software engineering to machine learning, data science tools, and automation solutions."
+>
         
     <h1>Some Things I’ve Built 🏗️</h1>
     <p class="mb-2">

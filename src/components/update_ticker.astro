@@ -1,10 +1,7 @@
 ---
 // TODO: creare contenitore per sta roba
-const updates = [
-  { date: "14/02", type: "DEV", text: "First Deploy" },
-  { date: "10/02", type: "NOT", text: "Pub: On the existing of this space" },
-  { date: "03/02", type: "DEV", text: "Creation of the homepage" },
-];
+import { lastUpdatesData } from '../content/static_pages/lastUpdates.ts';
+
 ---
 <!-- Wrapper esterno -->
 <div class="overflow-hidden">
@@ -12,7 +9,7 @@ const updates = [
   <div class="ticker-track flex gap-8 flex-1">
     
     <!-- Renderizziamo gli stessi dati 2 volte per coprire lo schermo e creare il loop -->
-    {[...updates, ...updates,].map((item) => (
+    {[...lastUpdatesData, ...lastUpdatesData,].map((item) => (
       <div class="flex items-center gap-3 whitespace-nowrap">
         <span class="text-xs text-gray-500">{item.date}</span>
         <span class="font-bold text-xs px-1">{item.type}</span>

@@ -3,17 +3,43 @@ import '../styles/global.css'
 import Navbar from '../components/navbar.astro'
 import Footer from '../components/footer.astro'
 import { ClientRouter } from 'astro:transitions'
+import { SEO } from 'astro-seo'
+
+export interface Props {
+	title?: string
+	description?: string
+	image?: string
+	article?: boolean
+}
+
+const { title = 'PeppOS',
+ description = 'Welcome to PeppOS - A web space for projects and ideas', 
+ image = '/og-image.png', 
+ article = false } = Astro.props as Props
+const canonicalURL = new URL(Astro.url.pathname, Astro.site)
 ---
 <!doctype html>
 <html lang="en" class="h-full">
 	<head>
+		<SEO
+			title={title}
+			description={description}
+			canonical={canonicalURL.toString()}
+			openGraph={{
+				basic: {
+					title: title,
+					type: article ? 'article' : 'website',
+					image: image,
+					url: canonicalURL.toString(),
+				},
+			}}
+		/>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="generator" content={Astro.generator} />
-		<title>PeppOS</title>
 		<!-- Cloudflare Web Analytics -->
-			<script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "4af8ec13ccfc422a9c118bb5cbb9a878"}'></script>
+		<script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "4af8ec13ccfc422a9c118bb5cbb9a878"}'></script>
 		<ClientRouter />
 	</head>
 	<body class="container max-w-4xl mx-auto flex flex-col h-full bg-background">

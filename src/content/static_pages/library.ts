@@ -441,4 +441,13 @@ export const libraryData: book[] = [
     Vote: 1,
     ISBN13: "9781455509126"
     },  
+    {
+    name: "L’investitore intelligente",
+    Author: "Benjamin Graham",
+    Started: new Date("2025-11-11"),
+    Finished: new Date("2026-02-17"),
+    Pages: 540,
+    Vote: 3,
+    ISBN13: "9780060555665"
+    },  
 ]
